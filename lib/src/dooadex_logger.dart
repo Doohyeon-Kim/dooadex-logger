@@ -5,7 +5,7 @@ import 'dooadex_logger_factory.dart';
 class DooadexLogger {
   factory DooadexLogger(String message) = DefaultDooadexLogger;
 
-  factory DooadexLogger.exception(Exception exception, {int? methodCount}) = ExceptionLogger;
+  factory DooadexLogger.exception(Exception exception, {int? errorMethodCount}) = ExceptionLogger;
 
   factory DooadexLogger.httpRequest({required http.Request httpRequest}) = HttpRequestLogger;
 

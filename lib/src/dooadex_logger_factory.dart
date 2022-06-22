@@ -6,13 +6,13 @@ import 'dooadex_logger.dart';
 
 class DefaultDooadexLogger implements DooadexLogger {
   DefaultDooadexLogger(String message, {int? methodCount}) {
-    Logger(printer: PrettyPrinter(methodCount: methodCount ?? 0)).v(message);
+    Logger(printer: PrettyPrinter(methodCount: methodCount ?? 0)).v("🦥 $message");
   }
 }
 
 class ExceptionLogger implements DooadexLogger {
-  ExceptionLogger(Exception exception, {int? methodCount}) {
-    Logger(printer: PrettyPrinter(methodCount: methodCount ?? 15)).e(exception);
+  ExceptionLogger(Exception exception, {int? errorMethodCount}) {
+    Logger(printer: PrettyPrinter(errorMethodCount: errorMethodCount ?? 15)).e(exception);
   }
 }
 
