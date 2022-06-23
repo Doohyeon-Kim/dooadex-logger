@@ -5,11 +5,18 @@ import 'dooadex_logger_factory.dart';
 class DooadexLogger {
   factory DooadexLogger(String message) = DefaultDooadexLogger;
 
-  factory DooadexLogger.exception(Exception exception, {int? errorMethodCount}) = ExceptionLogger;
+  factory DooadexLogger.exception(Exception exception,
+      {int? errorMethodCount}) = ExceptionLogger;
 
-  factory DooadexLogger.httpRequest({required http.Request httpRequest}) = HttpRequestLogger;
+  factory DooadexLogger.httpRequest({required http.Request httpRequest}) =
+      HttpRequestLogger;
 
-  factory DooadexLogger.httpResponse({required http.Response httpResponse, bool headers}) = HttpResponseLogger;
+  factory DooadexLogger.multipartRequest(
+          {required http.MultipartRequest multipartRequest}) =
+      MultipartRequestLogger;
+
+  factory DooadexLogger.httpResponse(
+      {required http.Response httpResponse, bool headers}) = HttpResponseLogger;
 
   factory DooadexLogger.error(Error error, {int? methodCount}) = ErrorLogger;
 
