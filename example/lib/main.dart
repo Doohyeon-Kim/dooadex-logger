@@ -54,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: ElevatedButton(
             onPressed: () async {
               DooadexLogger("Test Button onPressed");
+              DooadexLogger("Test Button onPressed\nTest Button onPressed\nTest Button onPressed");
 
               DooadexLogger.exception(_DooadexException("Exception Message"));
               DooadexLogger.error(DooadexError.example());

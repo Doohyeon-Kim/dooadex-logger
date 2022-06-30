@@ -6,7 +6,12 @@ import 'dooadex_logger.dart';
 
 class DefaultDooadexLogger implements DooadexLogger {
   DefaultDooadexLogger(String message) {
-    Logger().v("🦥 $message");
+    List<String> buffer = [];
+    for (String messageLine in message.split('\n')) {
+      buffer.add("🦥 $messageLine");
+    }
+    Logger(printer: PrettyPrinter(methodCount: 0, printEmojis: false))
+        .d(buffer.join("\n"));
   }
 }
 

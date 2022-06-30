@@ -1,3 +1,3 @@
-## 0.0.4
+# 0.0.5
 
-Add multipart logger
+The default(custom) logger got cuter.
