@@ -1,6 +1,6 @@
 name: dooadex_logger
 description: A useful logger.
-version: 0.0.6
+version: 0.0.7
 repository: https://github.com/Doohyeon-Kim/dooadex-logger
 
 environment:

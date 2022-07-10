@@ -15,9 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Dooadex Package Test App',
       theme: ThemeData(
-        primarySwatch: MaterialColor(DooadexColor.primaryMaterialColor.colorHex, DooadexColor.primaryMaterialColor.swatch),
+        primarySwatch: MaterialColor(DooadexColor.primaryMaterialColor.colorHex,
+            DooadexColor.primaryMaterialColor.swatch),
       ),
       home: const MyHomePage(title: 'Dooadex Home Page'),
     );
@@ -33,9 +35,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   Uri _generateUri() {
-    return Uri(scheme: "https", host: "api.agify.io", path: null, queryParameters: null, query: "name=dhkim");
+    return Uri(
+        scheme: "https",
+        host: "api.agify.io",
+        path: null,
+        queryParameters: null,
+        query: "name=dhkim");
   }
 
   Future<http.Response> _httpRequest({required http.Request request}) async {
@@ -45,45 +51,48 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () async {
-              DooadexLogger(_TestToPrint());
-              DooadexLogger("Test Button onPressed");
-              DooadexLogger("Test Button onPressed\nTest Button onPressed\nTest Button onPressed");
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Plugin example app'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () async {
+            DdxLogger("Test Button onPressed");
+            DdxLogger(
+                "Test Button onPressed\nTest Button onPressed\nTest Button onPressed");
+            DdxLogger(_TestToPrint());
+            DdxLogger.warning("Warning");
+            DdxLogger.info("Info");
+            DdxLogger.log("log1\nlog2\nlog3\nlog4\nlog5");
+            DdxLogger.heart("I Love You.");
+            DdxLogger.poop("Shit Code");
 
-              DooadexLogger.exception(_DooadexException("Exception Message"));
-              DooadexLogger.error(DooadexError.example());
+            DdxLogger.exception(_DdxException("Exception Message"));
+            DdxLogger.error(DdxError.example());
 
-              http.Request request = http.Request("GET", _generateUri());
-              request.headers.addAll({'Content-Type': 'application/json'});
+            http.Request request = http.Request("GET", _generateUri());
+            request.headers.addAll({'Content-Type': 'application/json'});
 
-              DooadexLogger.httpRequest(httpRequest: request);
-              http.Response response = await _httpRequest(request: request);
-              DooadexLogger.httpResponse(httpResponse: response);
-              DooadexLogger.httpResponse(httpResponse: response, headers: true);
-            },
-            child: const Text("Test"),
-          ),
+            DdxLogger.httpRequest(httpRequest: request);
+            http.Response response = await _httpRequest(request: request);
+            DdxLogger.httpResponse(httpResponse: response);
+            DdxLogger.httpResponse(httpResponse: response, headers: true);
+          },
+          child: const Text("Test"),
         ),
       ),
     );
   }
 }
 
-class _TestToPrint{
+class _TestToPrint {
   final String str = "Test Object print to String";
   final int integer = 3;
-  final double doub = 2.5;
 }
 
-class _DooadexException implements Exception {
-  _DooadexException(this.message);
+class _DdxException implements Exception {
+  _DdxException(this.message);
 
   final String? message;
 
@@ -93,13 +102,13 @@ class _DooadexException implements Exception {
   }
 }
 
-class DooadexError implements Error {
+class DdxError implements Error {
   final String? type;
   final String? message;
   final String? title;
   final String? detail;
 
-  DooadexError({this.type, this.message, this.title, this.detail});
+  DdxError({this.type, this.message, this.title, this.detail});
 
   @override
   String toString() {
@@ -109,12 +118,18 @@ class DooadexError implements Error {
   @override
   // TODO: implement stackTrace
   StackTrace? get stackTrace => throw UnimplementedError();
-
-  // factory DooadexError({String? type, String? message, String? title, String? detail}) = _DooadexError;
-  factory DooadexError.example({String? type, String? message, String? title, String? detail}) = _Example;
+  factory DdxError.example(
+      {String? type,
+      String? message,
+      String? title,
+      String? detail}) = _Example;
 }
 
-class _Example extends DooadexError {
+class _Example extends DdxError {
   _Example({String? type, String? message, String? title, String? detail})
-      : super(type: type ?? "TEST_ERROR", message: message ?? 'Error occurred', title: title ?? 'Error Title', detail: detail ?? 'Error Message');
+      : super(
+            type: type ?? "TEST_ERROR",
+            message: message ?? 'Error occurred',
+            title: title ?? 'Error Title',
+            detail: detail ?? 'Error Message');
 }
