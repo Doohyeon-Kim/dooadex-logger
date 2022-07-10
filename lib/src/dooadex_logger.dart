@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dooadex_logger_factory.dart';
 
 class DooadexLogger {
-  factory DooadexLogger(String message) = DefaultDooadexLogger;
+  factory DooadexLogger(dynamic message) = DefaultDooadexLogger;
 
   factory DooadexLogger.exception(Exception exception,
       {int? errorMethodCount}) = ExceptionLogger;

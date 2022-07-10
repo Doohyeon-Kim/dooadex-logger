@@ -53,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: ElevatedButton(
             onPressed: () async {
+              DooadexLogger(_TestToPrint());
               DooadexLogger("Test Button onPressed");
               DooadexLogger("Test Button onPressed\nTest Button onPressed\nTest Button onPressed");
 
@@ -73,6 +74,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+class _TestToPrint{
+  final String str = "Test Object print to String";
+  final int integer = 3;
+  final double doub = 2.5;
 }
 
 class _DooadexException implements Exception {

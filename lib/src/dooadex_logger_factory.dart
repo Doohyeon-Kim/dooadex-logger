@@ -5,7 +5,8 @@ import 'package:logger/logger.dart';
 import 'dooadex_logger.dart';
 
 class DefaultDooadexLogger implements DooadexLogger {
-  DefaultDooadexLogger(String message) {
+  DefaultDooadexLogger(dynamic message) {
+    message = message.toString();
     List<String> buffer = [];
     for (String messageLine in message.split('\n')) {
       buffer.add("🦥 $messageLine");
