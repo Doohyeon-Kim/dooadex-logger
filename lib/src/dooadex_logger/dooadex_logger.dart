@@ -1,12 +1,11 @@
 import 'package:http/http.dart' as http;
 
-import 'dooadex_logger_factory.dart';
+import './dooadex_logger_factory.dart';
 
 class DdxLogger {
   factory DdxLogger(dynamic message) = DefaultDooadexLogger;
 
-  factory DdxLogger.exception(Exception exception, {int? errorMethodCount}) =
-      ExceptionLogger;
+  factory DdxLogger.exception(Exception exception, {int? errorMethodCount}) = ExceptionLogger;
 
   factory DdxLogger.error(Error error, {int? methodCount}) = ErrorLogger;
 
@@ -16,15 +15,13 @@ class DdxLogger {
 
   factory DdxLogger.warning(dynamic message) = WarningLogger;
 
-  factory DdxLogger.httpRequest({required http.Request httpRequest}) =
-      HttpRequestLogger;
+  factory DdxLogger.build(dynamic message) = BuildLogger;
 
-  factory DdxLogger.multipartRequest(
-          {required http.MultipartRequest multipartRequest}) =
-      MultipartRequestLogger;
+  factory DdxLogger.httpRequest({required http.Request httpRequest}) = HttpRequestLogger;
 
-  factory DdxLogger.httpResponse(
-      {required http.Response httpResponse, bool headers}) = HttpResponseLogger;
+  factory DdxLogger.multipartRequest({required http.MultipartRequest multipartRequest}) = MultipartRequestLogger;
+
+  factory DdxLogger.httpResponse({required http.Response httpResponse, bool printHeaders}) = HttpResponseLogger;
 
   factory DdxLogger.htmlRequest(
       {required String method,
@@ -34,12 +31,8 @@ class DdxLogger {
       int? methodCount}) = HtmlRequestLogger;
 
   factory DdxLogger.htmlResponse(
-      {Map<String, String>? headers,
+      {Map<String, String>? printHeaders,
       required int statusCode,
       required String body,
       int? methodCount}) = HtmlResponseLogger;
-
-  factory DdxLogger.heart(dynamic message) = HeartLogger;
-
-  factory DdxLogger.poop(dynamic message) = PoopLogger;
 }

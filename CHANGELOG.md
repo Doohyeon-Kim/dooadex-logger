@@ -1,3 +1,3 @@
-# 0.0.7
+# 0.1.0
 
-Now the default logger can print anything. 
+Added DdxFunLogger.  

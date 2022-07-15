@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Dooadex Package Test App',
       theme: ThemeData(
-        primarySwatch: MaterialColor(DooadexColor.primaryMaterialColor.colorHex,
-            DooadexColor.primaryMaterialColor.swatch),
+        primarySwatch:
+            MaterialColor(DooadexColor.primaryMaterialColor.colorHex, DooadexColor.primaryMaterialColor.swatch),
       ),
       home: const MyHomePage(title: 'Dooadex Home Page'),
     );
@@ -36,12 +36,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Uri _generateUri() {
-    return Uri(
-        scheme: "https",
-        host: "api.agify.io",
-        path: null,
-        queryParameters: null,
-        query: "name=dhkim");
+    return Uri(scheme: "https", host: "api.agify.io", path: null, queryParameters: null, query: "name=dhkim");
   }
 
   Future<http.Response> _httpRequest({required http.Request request}) async {
@@ -59,14 +54,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ElevatedButton(
           onPressed: () async {
             DdxLogger("Test Button onPressed");
-            DdxLogger(
-                "Test Button onPressed\nTest Button onPressed\nTest Button onPressed");
-            DdxLogger(_TestToPrint());
+            DdxLogger(_TestObjectPrint());
             DdxLogger.warning("Warning");
             DdxLogger.info("Info");
             DdxLogger.log("log1\nlog2\nlog3\nlog4\nlog5");
-            DdxLogger.heart("I Love You.");
-            DdxLogger.poop("Shit Code");
+            DdxLogger.build("build start\nbuilding...\nbuilding...\nbuilding...\nbuild done");
+            DdxFunLogger.heart("I Love You.");
+            DdxFunLogger.poop("Shit Code");
 
             DdxLogger.exception(_DdxException("Exception Message"));
             DdxLogger.error(DdxError.example());
@@ -77,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
             DdxLogger.httpRequest(httpRequest: request);
             http.Response response = await _httpRequest(request: request);
             DdxLogger.httpResponse(httpResponse: response);
-            DdxLogger.httpResponse(httpResponse: response, headers: true);
+            DdxLogger.httpResponse(httpResponse: response, printHeaders: true);
           },
           child: const Text("Test"),
         ),
@@ -86,8 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class _TestToPrint {
-  final String str = "Test Object print to String";
+class _TestObjectPrint {
+  final String str = "Instance";
   final int integer = 3;
 }
 
@@ -116,13 +110,9 @@ class DdxError implements Error {
   }
 
   @override
-  // TODO: implement stackTrace
   StackTrace? get stackTrace => throw UnimplementedError();
-  factory DdxError.example(
-      {String? type,
-      String? message,
-      String? title,
-      String? detail}) = _Example;
+
+  factory DdxError.example({String? type, String? message, String? title, String? detail}) = _Example;
 }
 
 class _Example extends DdxError {
