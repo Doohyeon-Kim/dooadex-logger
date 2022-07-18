@@ -9,6 +9,12 @@ class DefaultDooadexLogger implements DdxLogger {
   }
 }
 
+class DebuggingLogger implements DdxLogger {
+  DebuggingLogger(dynamic message) {
+    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.debug, message);
+  }
+}
+
 class ExceptionLogger implements DdxLogger {
   ExceptionLogger(Exception exception, {int? errorMethodCount}) {
     DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.exception, exception, methodCount: errorMethodCount ??= 10);

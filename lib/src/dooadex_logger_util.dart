@@ -18,6 +18,7 @@ class DdxLoggerUtil {
 class _Emojis {
   String ddx = '🦥';
   String info = '💡';
+  String debug = '🐛';
   String warning = '⚠️';
   String error = '🛑';
   String exception = '🚫';

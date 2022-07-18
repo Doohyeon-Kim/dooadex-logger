@@ -13,6 +13,8 @@ class DdxLogger {
 
   factory DdxLogger.info(dynamic message) = InformationLogger;
 
+  factory DdxLogger.debug(dynamic message) = DebuggingLogger;
+
   factory DdxLogger.warning(dynamic message) = WarningLogger;
 
   factory DdxLogger.build(dynamic message) = BuildLogger;

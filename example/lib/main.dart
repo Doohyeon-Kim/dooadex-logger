@@ -53,10 +53,11 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            DdxLogger("Test Button onPressed");
-            DdxLogger(_TestObjectPrint());
+            DdxLogger("Default Logger");
+            DdxLogger("You can user this for even Object ${_TestObjectPrint()}");
             DdxLogger.warning("Warning");
             DdxLogger.info("Info");
+            DdxLogger.debug("Debugging");
             DdxLogger.log("log1\nlog2\nlog3\nlog4\nlog5");
             DdxLogger.build("build start\nbuilding...\nbuilding...\nbuilding...\nbuild done");
             DdxFunLogger.heart("I Love You.");
