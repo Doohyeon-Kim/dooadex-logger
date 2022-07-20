@@ -1,9 +1,9 @@
-import 'package:dooadex_logger/dooadex_logger.dart';
-import 'package:dooadex_palette/dooadex_palette.dart';
+import 'package:gazua_logger/gazua_logger.dart';
 
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:twostrings_palette/twostrings_palette.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,12 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Dooadex Package Test App',
+      title: 'Two Strings Package Test App',
       theme: ThemeData(
         primarySwatch:
-            MaterialColor(DooadexColor.primaryMaterialColor.colorHex, DooadexColor.primaryMaterialColor.swatch),
+            MaterialColor(TwoStringsColor.primaryMaterialColor.colorHex, TwoStringsColor.primaryMaterialColor.swatch),
       ),
-      home: const MyHomePage(title: 'Dooadex Home Page'),
+      home: const MyHomePage(title: 'Two Strings Home Page'),
     );
   }
 }
@@ -53,26 +53,26 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            DdxLogger("Default Logger");
-            DdxLogger("You can user this for even Object ${_TestObjectPrint()}");
-            DdxLogger.warning("Warning");
-            DdxLogger.info("Info");
-            DdxLogger.debug("Debugging");
-            DdxLogger.log("log1\nlog2\nlog3\nlog4\nlog5");
-            DdxLogger.build("build start\nbuilding...\nbuilding...\nbuilding...\nbuild done");
-            DdxFunLogger.heart("I Love You.");
-            DdxFunLogger.poop("Shit Code");
+            GzLogger("Default Logger");
+            GzLogger("You can user this for even Object ${_TestObjectPrint()}");
+            GzLogger.warning("Warning");
+            GzLogger.info("Info");
+            GzLogger.debug("Debugging");
+            GzLogger.log("log1\nlog2\nlog3\nlog4\nlog5");
+            GzLogger.build("build start\nbuilding...\nbuilding...\nbuilding...\nbuild done");
+            GzFunLogger.heart("I Love You.");
+            GzFunLogger.poop("Shit Code");
 
-            DdxLogger.exception(_DdxException("Exception Message"));
-            DdxLogger.error(DdxError.example());
+            GzLogger.exception(_GzException("Exception Message"));
+            GzLogger.error(GzError.example());
 
             http.Request request = http.Request("GET", _generateUri());
             request.headers.addAll({'Content-Type': 'application/json'});
 
-            DdxLogger.httpRequest(httpRequest: request);
+            GzLogger.httpRequest(httpRequest: request);
             http.Response response = await _httpRequest(request: request);
-            DdxLogger.httpResponse(httpResponse: response);
-            DdxLogger.httpResponse(httpResponse: response, printHeaders: true);
+            GzLogger.httpResponse(httpResponse: response);
+            GzLogger.httpResponse(httpResponse: response, printHeaders: true);
           },
           child: const Text("Test"),
         ),
@@ -86,24 +86,24 @@ class _TestObjectPrint {
   final int integer = 3;
 }
 
-class _DdxException implements Exception {
-  _DdxException(this.message);
+class _GzException implements Exception {
+  _GzException(this.message);
 
   final String? message;
 
   @override
   String toString() {
-    return "DooadexException: $message";
+    return "GzException: $message";
   }
 }
 
-class DdxError implements Error {
+class GzError implements Error {
   final String? type;
   final String? message;
   final String? title;
   final String? detail;
 
-  DdxError({this.type, this.message, this.title, this.detail});
+  GzError({this.type, this.message, this.title, this.detail});
 
   @override
   String toString() {
@@ -113,10 +113,10 @@ class DdxError implements Error {
   @override
   StackTrace? get stackTrace => throw UnimplementedError();
 
-  factory DdxError.example({String? type, String? message, String? title, String? detail}) = _Example;
+  factory GzError.example({String? type, String? message, String? title, String? detail}) = _Example;
 }
 
-class _Example extends DdxError {
+class _Example extends GzError {
   _Example({String? type, String? message, String? title, String? detail})
       : super(
             type: type ?? "TEST_ERROR",

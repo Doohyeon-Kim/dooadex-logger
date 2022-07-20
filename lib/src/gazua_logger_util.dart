@@ -1,7 +1,7 @@
 import 'package:logger/logger.dart';
 
-class DdxLoggerUtil {
-  DdxLoggerUtil._();
+class GzLoggerUtil {
+  GzLoggerUtil._();
 
   static createLogger(String emoji, dynamic message, {int? methodCount}) {
     message = message.toString();
@@ -16,7 +16,7 @@ class DdxLoggerUtil {
 }
 
 class _Emojis {
-  String ddx = '🦥';
+  String gazua = '🦥';
   String info = '💡';
   String debug = '🐛';
   String warning = '⚠️';

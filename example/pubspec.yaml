@@ -11,9 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  dooadex_palette:
+  twostrings_palette:
 
-  dooadex_logger:
+  gazua_logger:
     path: ../
 
 

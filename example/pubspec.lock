@@ -50,20 +50,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  dooadex_logger:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.1.0"
-  dooadex_palette:
-    dependency: "direct main"
-    description:
-      name: dooadex_palette
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.2"
   fake_async:
     dependency: transitive
     description:
@@ -88,6 +74,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  gazua_logger:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "0.1.1"
   http:
     dependency: transitive
     description:
@@ -191,6 +184,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
+  twostrings_palette:
+    dependency: "direct main"
+    description:
+      name: twostrings_palette
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   typed_data:
     dependency: transitive
     description:

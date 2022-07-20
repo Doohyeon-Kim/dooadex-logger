@@ -1,73 +1,73 @@
 import 'package:http/http.dart' as http;
 
-import '../dooadex_logger_util.dart';
-import 'dooadex_logger.dart';
+import '../gazua_logger_util.dart';
+import 'gazua_logger.dart';
 
-class DefaultDooadexLogger implements DdxLogger {
-  DefaultDooadexLogger(dynamic message) {
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.ddx, message);
+class DefaultGzLogger implements GzLogger {
+  DefaultGzLogger(dynamic message) {
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.gazua, message);
   }
 }
 
-class DebuggingLogger implements DdxLogger {
+class DebuggingLogger implements GzLogger {
   DebuggingLogger(dynamic message) {
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.debug, message);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.debug, message);
   }
 }
 
-class ExceptionLogger implements DdxLogger {
+class ExceptionLogger implements GzLogger {
   ExceptionLogger(Exception exception, {int? errorMethodCount}) {
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.exception, exception, methodCount: errorMethodCount ??= 10);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.exception, exception, methodCount: errorMethodCount ??= 10);
   }
 }
 
-class ErrorLogger implements DdxLogger {
+class ErrorLogger implements GzLogger {
   ErrorLogger(Error error, {int? methodCount}) {
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.error, error, methodCount: methodCount);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.error, error, methodCount: methodCount);
   }
 }
 
-class WarningLogger implements DdxLogger {
+class WarningLogger implements GzLogger {
   WarningLogger(dynamic message) {
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.warning, message);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.warning, message);
   }
 }
 
-class LogLogger implements DdxLogger {
+class LogLogger implements GzLogger {
   LogLogger(dynamic message) {
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.robot, message);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.robot, message);
   }
 }
 
-class InformationLogger implements DdxLogger {
+class InformationLogger implements GzLogger {
   InformationLogger(dynamic message) {
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.info, message);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.info, message);
   }
 }
 
-class BuildLogger implements DdxLogger {
+class BuildLogger implements GzLogger {
   BuildLogger(dynamic message) {
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.build, message);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.build, message);
   }
 }
 
-class HttpRequestLogger implements DdxLogger {
+class HttpRequestLogger implements GzLogger {
   HttpRequestLogger({required http.Request httpRequest}) {
     String logMessage =
         "Http Request ${DateTime.now()}\nURI: ${httpRequest.url}\nMethod: ${httpRequest.method}\nheaders: ${httpRequest.headers}\nBody: ${httpRequest.body}";
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.robot, logMessage);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.robot, logMessage);
   }
 }
 
-class MultipartRequestLogger implements DdxLogger {
+class MultipartRequestLogger implements GzLogger {
   MultipartRequestLogger({required http.MultipartRequest multipartRequest}) {
     String logMessage =
         "Http Request ${DateTime.now()}\nURI: ${multipartRequest.url}\nMethod: ${multipartRequest.method}\nheaders: ${multipartRequest.headers}\nfiles: ${multipartRequest.files}";
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.robot, logMessage);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.robot, logMessage);
   }
 }
 
-class HttpResponseLogger implements DdxLogger {
+class HttpResponseLogger implements GzLogger {
   HttpResponseLogger({required http.Response httpResponse, bool printHeaders = false}) {
     late String logMessage;
     printHeaders == false
@@ -75,11 +75,11 @@ class HttpResponseLogger implements DdxLogger {
             "Http Response ${DateTime.now()}\nStatus Code: ${httpResponse.statusCode}\nBody: ${httpResponse.body}"
         : logMessage =
             "Http Response ${DateTime.now()}\nStatus Code: ${httpResponse.statusCode}\nHeaders ${httpResponse.headers}\nBody: ${httpResponse.body}";
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.robot, logMessage);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.robot, logMessage);
   }
 }
 
-class HtmlRequestLogger implements DdxLogger {
+class HtmlRequestLogger implements GzLogger {
   HtmlRequestLogger(
       {required String method,
       required Map<String, String> headers,
@@ -87,17 +87,17 @@ class HtmlRequestLogger implements DdxLogger {
       String? body,
       int? methodCount}) {
     late String logMessage = "Request ${DateTime.now()}\nURI: $uri\nMethod: $method\nheaders: $headers\nBody: $body";
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.robot, logMessage);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.robot, logMessage);
   }
 }
 
-class HtmlResponseLogger implements DdxLogger {
+class HtmlResponseLogger implements GzLogger {
   HtmlResponseLogger(
       {Map<String, String>? printHeaders, required int statusCode, required String body, int? methodCount}) {
     late String logMessage;
     printHeaders == null
         ? logMessage = "${DateTime.now()}\nResponse\nStatus Code: $statusCode\nBody: $body"
         : logMessage = "${DateTime.now()}\nResponse\nStatus Code: $statusCode\nHeaders $printHeaders\nBody: $body";
-    DdxLoggerUtil.createLogger(DdxLoggerUtil.emojis.robot, logMessage);
+    GzLoggerUtil.createLogger(GzLoggerUtil.emojis.robot, logMessage);
   }
 }

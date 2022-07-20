@@ -1,7 +1,7 @@
-name: dooadex_logger
+name: gazua_logger
 description: A useful logger.
-version: 0.1.1
-repository: https://github.com/Doohyeon-Kim/dooadex-logger
+version: 0.0.1
+repository: https://github.com/Doohyeon-Kim/gazua-logger
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
